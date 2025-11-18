@@ -1,3 +1,46 @@
 spring:
   application:
     name: login-project
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/login_db?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: admin
+
+# 1. 서버 포트 설정 (선택 사항)
+server:
+  port: 8080
+
+# 3. JPA (데이터 관리) 설정
+jpa:
+  hibernate:
+    # ddl-auto: 스키마(테이블) 자동 생성 설정
+    # - create: 매번 새로 만듦 (테스트용)
+    # - update: 변경분만 반영 (개발용)
+    # - none: 자동 생성 안 함 (운영용)
+    ddl-auto: update
+  properties:
+    hibernate:
+      # show_sql: JPA가 실행하는 SQL 쿼리를 로그로 보여줌 (개발 시 유용)
+      show_sql: true
+      # format_sql: SQL 쿼리를 예쁘게 정렬해서 보여줌
+      format_sql: true
+  # (선택) H2 DB 사용 시 웹 콘솔 활성화
+  defer-datasource-initialization: true
+h2:
+  console:
+    enabled: true
+    path: /h2-console # http://localhost:8080/h2-console 로 접속
+
+# 4. 이메일 (Java Mail Sender) 설정
+mail:
+  host: smtp.gmail.com      # (Gmail 기준)
+  port: 587                   # (Gmail 기준)
+  username: notilink.no.reply@gmail.com
+  password: dgbvurhmgnkaybre
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
