@@ -4,8 +4,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/login_db?serverTimezone=UTC&characterEncoding=UTF-8
-    username: username
-    password: password
+    username: root
+    password: ${DB_PASSWORD}
 
 server:
   port: 8080
@@ -23,19 +23,14 @@ jpa:
       show_sql: true
       # format_sql: SQL 쿼리를 예쁘게 정렬해서 보여줌
       format_sql: true
-  # (선택) H2 DB 사용 시 웹 콘솔 활성화
-  defer-datasource-initialization: true
-h2:
-  console:
-    enabled: true
-    path: /h2-console # http://localhost:8080/h2-console 로 접속
+
 
 # 이메일
 mail:
-  host: smtp.gmail.com      # (Gmail 기준)
-  port: 587                   # (Gmail 기준)
+  host: smtp.gmail.com
+  port: 587
   username: notilink.no.reply@gmail.com
-  password: Password
+  password: ${GMAIL_APP_PASSWORD}
   properties:
     mail:
       smtp:
