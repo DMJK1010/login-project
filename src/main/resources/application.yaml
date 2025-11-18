@@ -37,7 +37,7 @@ mail:
   host: smtp.gmail.com      # (Gmail 기준)
   port: 587                   # (Gmail 기준)
   username: notilink.no.reply@gmail.com
-  password: dgbvurhmgnkaybre
+  password: Password
   properties:
     mail:
       smtp:
