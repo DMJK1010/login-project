@@ -30,7 +30,8 @@ Spring Boot를 활용한 **회원가입 및 이메일 발송 기능** 구현 프
 **POST** `http://localhost:8081/signup`
 
 **Body (JSON)**
-```json
+```
+json
 {
   "email": "test@example.com",
   "password": "mypassword123"
@@ -38,6 +39,7 @@ Spring Boot를 활용한 **회원가입 및 이메일 발송 기능** 구현 프
 ```
 
 ## Project Structer
+```
 src/main/java/com/example/login_project
 ├── config       # Security 설정 (SecurityConfig)
 ├── controller   # 웹 요청 처리 (UserController)
@@ -45,3 +47,4 @@ src/main/java/com/example/login_project
 ├── repository   # DB 접근 (UserRepository)
 ├── service      # 비즈니스 로직 (UserService, EmailService)
 └── user         # DB 엔티티 (User)
+```
