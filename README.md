@@ -1,6 +1,6 @@
 # 🔐 Login Project (Spring Boot Practice)
 
-Spring Boot를 활용한 **회원가입 및 이메일 발송 기능** 구현 프로젝트입니다.
+> Spring Boot를 활용한 **회원가입 및 이메일 발송 기능** 구현 프로젝트입니다.
 보안을 고려한 비밀번호 암호화와 실제 이메일 전송 기능을 포함하고 있습니다.
 
 ## 🛠 Tech Stack
