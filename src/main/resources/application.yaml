@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: login-project
@@ -6,34 +9,29 @@ spring:
     url: jdbc:mysql://localhost:3306/login_db?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: ${DB_PASSWORD}
-
-server:
-  port: 8080
-
-jpa:
-  hibernate:
-    # ddl-auto: 스키마(테이블) 자동 생성 설정
-    # - create: 매번 새로 만듦 (테스트용)
-    # - update: 변경분만 반영 (개발용)
-    # - none: 자동 생성 안 함 (운영용)
-    ddl-auto: update
-  properties:
+  jpa:
     hibernate:
-      # show_sql: JPA가 실행하는 SQL 쿼리를 로그로 보여줌 (개발 시 유용)
-      show_sql: true
-      # format_sql: SQL 쿼리를 예쁘게 정렬해서 보여줌
-      format_sql: true
+      # ddl-auto: 스키마(테이블) 자동 생성 설정
+      # - create: 매번 새로 만듦 (테스트용)
+      # - update: 변경분만 반영 (개발용)
+      # - none: 자동 생성 안 함 (운영용)
+      ddl-auto: update
+    properties:
+      hibernate:
+        # show_sql: JPA가 실행하는 SQL 쿼리를 로그로 보여줌 (개발 시 유용)
+        show_sql: true
+        # format_sql: SQL 쿼리를 예쁘게 정렬해서 보여줌
+        format_sql: true
 
-
-# 이메일
-mail:
-  host: smtp.gmail.com
-  port: 587
-  username: notilink.no.reply@gmail.com
-  password: ${GMAIL_APP_PASSWORD}
-  properties:
-    mail:
-      smtp:
-        auth: true
-        starttls:
-          enable: true
+  # 이메일
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: notilink.no.reply@gmail.com
+    password: ${GMAIL_APP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
