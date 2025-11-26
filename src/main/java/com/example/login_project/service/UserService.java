@@ -1,5 +1,6 @@
 package com.example.login_project.service;
 
+import com.example.login_project.dto.UserLoginDto;
 import com.example.login_project.dto.UserSignupDto;
 import com.example.login_project.repository.UserRepository;
 import com.example.login_project.user.User;
@@ -35,6 +36,15 @@ public class UserService {
 
         emailService.sendEmail(user.getEmail(), "가입을 축하합니다!", "회원가입이 성공적으로 완료되었습니다.");
 
+        return user.getId();
+    }
+
+    public Long login(UserLoginDto userLoginDto) throws Exception {
+        User user = userRepository.findByEmail(userLoginDto.getEmail()).orElseThrow(() -> new Exception("이메일 또는 비밀번호가 일치하지 않습니다."));
+
+        if(!passwordEncoder.matches(userLoginDto.getPassword(), user.getPassword())){
+            throw new Exception("이메일 또는 비밀번호가 일치하지 않습니다.");
+        }
         return user.getId();
     }
 }
