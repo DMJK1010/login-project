@@ -72,10 +72,18 @@ Authorization Bearer {token}
 ## Project Structer
 ```
 src/main/java/com/example/login_project
-├── config       # Security 설정 (SecurityConfig)
+├── config       # Security 및 Filter 설정 (SecurityConfig, JwtFilter)
 ├── controller   # 웹 요청 처리 (UserController)
-├── dto          # 데이터 전송 객체 (UserSignupDto)
+├── dto          # 데이터 전송 객체 (UserSignupDto, UserLoginDto)
 ├── repository   # DB 접근 (UserRepository)
 ├── service      # 비즈니스 로직 (UserService, EmailService)
-└── user         # DB 엔티티 (User)
+├── user         # DB 엔티티 (User)
+└── utils        # JWT 생성 및 검증 도구 (JwtUtil)
 ```
+
+### 💡 11/26 추가된 내용 요약
+1.  **Tech Stack:** `JWT (jjwt)`가 추가되었습니다.
+2.  **Key Features:** `로그인`과 `JWT 인증` 기능 설명이 추가되었습니다.
+3.  **API Specification:** `/login`과 `/info` (헤더 포함) 사용법이 추가되었습니다.
+4.  **Project Structure:** `utils` 패키지와 새로 생긴 파일들이 구조도에 반영되었습니다.
+
