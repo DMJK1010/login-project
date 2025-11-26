@@ -64,7 +64,7 @@
 **GET** 'http://localhost:8081/info'
 
 **Headers**
-Authorization Bearer {token}
+- Authorization Bearer {token}
 
 ## ⚙️ Environment Variables
 ** ⚠️ 보안을 위해 비밀번호와 키 값은 application-secret.yaml과 환경 변수로 관리합니다.**
