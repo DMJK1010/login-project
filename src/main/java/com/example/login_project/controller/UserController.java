@@ -4,6 +4,8 @@ import com.example.login_project.dto.UserLoginDto;
 import com.example.login_project.dto.UserSignupDto;
 import com.example.login_project.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +24,12 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody UserLoginDto userLoginDto) throws Exception {
-        userService.login(userLoginDto);
-        return "로그인 성공!";
+
+        return userService.login(userLoginDto);
+    }
+
+    @GetMapping("/info")
+    public String userInfo(Authentication auth){
+        return "로그인된 사용자는 " + auth.getName() + " 입니다.";
     }
 }

@@ -8,11 +8,16 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import com.example.login_project.utils.JwtUtil;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity // 스프링 시큐리티 기능 활성화
+@RequiredArgsConstructor
 public class SecurityConfig {
 
+    private final JwtUtil jwtUtil;
     // 1. 암호화 도구 (비밀번호를 안전하게 바꾸는 기계) 등록
     // 이 Bean이 등록되어야 UserService에서 사용할 수 있습니다!
     @Bean
@@ -39,7 +44,10 @@ public class SecurityConfig {
                         .requestMatchers("/signup", "/", "/login", "/error").permitAll()
                         // 그 외 모든 요청은 인증(로그인) 필요함
                         .anyRequest().authenticated()
-                );
+                )
+
+                // 기존 로그인 필터보다 먼저 JwtFilter를 실행하도록 함
+                .addFilterBefore(new JwtFilter(jwtUtil), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

@@ -1,5 +1,6 @@
 package com.example.login_project.service;
 
+import com.example.login_project.utils.JwtUtil;
 import com.example.login_project.dto.UserLoginDto;
 import com.example.login_project.dto.UserSignupDto;
 import com.example.login_project.repository.UserRepository;
@@ -16,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
     private final EmailService emailService;
+    private final JwtUtil jwtUtil;
 
     @Transactional
     public Long signUp(UserSignupDto userSignupDto) throws Exception {
@@ -39,12 +40,12 @@ public class UserService {
         return user.getId();
     }
 
-    public Long login(UserLoginDto userLoginDto) throws Exception {
+    public String login(UserLoginDto userLoginDto) throws Exception {
         User user = userRepository.findByEmail(userLoginDto.getEmail()).orElseThrow(() -> new Exception("이메일 또는 비밀번호가 일치하지 않습니다."));
 
         if(!passwordEncoder.matches(userLoginDto.getPassword(), user.getPassword())){
             throw new Exception("이메일 또는 비밀번호가 일치하지 않습니다.");
         }
-        return user.getId();
+        return jwtUtil.createToken(user.getEmail(), user.getId());
     }
 }
