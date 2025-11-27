@@ -39,7 +39,7 @@
 ## 📝 API Specification
 
 ### 1. 회원가입 (Sign Up)
-**POST** `http://localhost:8081/signup`
+**POST** 'http://localhost:8081/signup`
 
 **Body (JSON)**
 ```json
@@ -67,7 +67,7 @@
 - Authorization Bearer {token}
 
 ## ⚙️ Environment Variables
-** ⚠️ 보안을 위해 비밀번호와 키 값은 application-secret.yaml과 환경 변수로 관리합니다.**
+⚠️ 보안을 위해 비밀번호와 키 값은 application-secret.yaml과 환경 변수로 관리합니다.
 
 ## Project Structer
 ```
